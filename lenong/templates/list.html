@@ -76,7 +76,7 @@
 			<div class="pagenation">
 				<a href="#"><上一页</a>
                 {% for foo in con.paginator.page_range %}
-                <a href="{% url 'fruite' 2 foo  %}" class="active">{{ foo }}</a>
+                <a href="{% url 'fruite' fkey foo  %}" class="active">{{ foo }}</a>
                 {% endfor %}
 
 

@@ -15,7 +15,7 @@ def list(request,fkey,pindex):
     con = models.GoodsInfo.book1.filter(g_type=fkey)
     paginator = Paginator(con,1)
     con = paginator.page(int(pindex))
-    return render(request, 'list.html', {'con': con})
+    return render(request, 'list.html', {'con': con,'fkey':fkey})
 
 def index(request):
     title = models.Typeinfo.book.all()
