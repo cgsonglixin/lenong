@@ -63,8 +63,8 @@
             {% for con in con %}
 
 				<li>
-					<h4><a href="#">{{ con.gtitle }}</a></h4>
-					<a href="#">{{ con.gpic|safe }}</a>
+					<h4><a href="{% url 'detail' con.id %}">{{ con.gtitle }}</a></h4>
+					<a href="{% url 'detail' con.id %}">{{ con.gpic|safe }}</a>
 					<div class="prize">¥ {{ con.gprice }}</div>
 				</li>
                 {% endfor %}
@@ -108,12 +108,12 @@
 			<ul class="goods_list fl">
         {% for ter in woter %}
         <li>
-					<h4><a href="#">{{ ter.gtitle }}</a></h4>
-					<a href="#">{{ ter.gpic|safe }}</a>
+					<h4><a href="{% url 'detail' ter.id %}">{{ ter.gtitle }}</a></h4>
+					<a href="{% url 'detail' ter.id %}">{{ ter.gpic|safe }}</a>
 					<div class="prize">{{ ter.gprice }}</div>
-				</li></ul>
+				</li>
         {% endfor %}
-
+</ul>
 
 
 		</div>

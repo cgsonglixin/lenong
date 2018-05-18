@@ -13,9 +13,11 @@ def test1(request):
 
 def list(request,fkey,pindex):
     con = models.GoodsInfo.book1.filter(g_type=fkey)
+    con1 = models.GoodsInfo.book1.filter(g_type=fkey).order_by('-gclick')
+
     paginator = Paginator(con,1)
     con = paginator.page(int(pindex))
-    return render(request, 'list.html', {'con': con,'fkey':fkey})
+    return render(request, 'list.html', {'con': con,'fkey':fkey,'con1':con1[0:2]})
 
 def index(request):
     title = models.Typeinfo.book.all()
@@ -25,5 +27,8 @@ def index(request):
     return  render(request,'index.html',context)
     # return HttpResponse (con.values())
 
+
+def heheda(request):
+    return render(request,'heheda.html')
 
 

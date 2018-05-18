@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from lenongapp import models
+from django.http import HttpResponseRedirect
 # Create your views here.
 def index(request):
     return render(request,'register.html')
@@ -32,7 +33,7 @@ def login(request):
     try:
         a = models.UserInfo.book.get(uname=username)
         if a.upwd == pwd:
-            return render(request, 'index.html')
+            return HttpResponseRedirect('/goods/index/')
         else:
             return HttpResponse('密码错误')
 

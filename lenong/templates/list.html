@@ -16,7 +16,7 @@
 				</ul>
 			</div>
 			<ul class="navlist fl">
-				<li><a href="">首页</a></li>
+				<li><a href="{% url 'index' %}">首页</a></li>
 				<li class="interval">|</li>
 				<li><a href="">手机生鲜</a></li>
 				<li class="interval">|</li>
@@ -36,16 +36,16 @@
 			<div class="new_goods">
 				<h3>新品推荐</h3>
 				<ul>
-					<li>
-						<a href="#"><img src="/static/images/goods/goods001.jpg"></a>
-						<h4><a href="#">进口柠檬</a></h4>
-						<div class="prize">￥3.90</div>
+                    {% for foo in con1  %}
+                    <li>
+						<a href="{% url 'detail' foo.id %}">{{ foo.gpic|safe }}</a>
+						<h4><a href="{% url 'detail' foo.id %}">{{ foo.gtitle }}</a></h4>
+						<div class="prize">￥{{ foo.gprice }}</div>
 					</li>
-					<li>
-						<a href="#"><img src="/static/images/goods/goods002.jpg"></a>
-						<h4><a href="#">玫瑰香葡萄</a></h4>
-						<div class="prize">￥16.80</div>
-					</li>
+                    {% endfor %}
+
+
+
 				</ul>
 			</div>
 		</div>
