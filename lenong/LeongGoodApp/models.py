@@ -11,6 +11,11 @@ class Typeinfo(models.Model):
     def __str__(self):
         return self.ttitle
 
+class Userinfo(models.Model):
+    utitle = models.CharField(max_length=20)
+    isDelete = models.BooleanField(default=False)
+    book2 = models.Manager()
+
 
 class GoodsInfo(models.Model):
     # 具体的商品
@@ -23,9 +28,10 @@ class GoodsInfo(models.Model):
     gunit = models.CharField(max_length=20,default='550g')
     gjianjie = models.TextField()
     gpub_date = models.DateTimeField(default=datetime.datetime.now())
-    gpubj_date = models.DateTimeField()
+    gpubj_date = models.DateTimeField(default=datetime.datetime.now())
     book1 = models.Manager()
     gpic = RichTextUploadingField()
+    g_User = models.ForeignKey(Userinfo)
 
     def __str__(self):
         return  self.gtitle

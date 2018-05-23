@@ -9,7 +9,7 @@
 				<h1>全部商品分类</h1>
 				<span></span>
 				<ul class="subnav">
-					<li><a href="{% url 'fruite' 2 1 %}" class="fruit">新鲜水果</a></li>
+					<li><a href="{% url 'goods:fruite' 2 1 %}" class="fruit">新鲜水果</a></li>
 					<li><a href="#" class="seafood">海鲜水产</a></li>
 					<li><a href="#" class="meet">猪牛羊肉</a></li>
 					<li><a href="#" class="egg">禽类蛋品</a></li>
@@ -18,7 +18,7 @@
 				</ul>
 			</div>
 			<ul class="navlist fl">
-				<li><a href="{% url 'index' %}">首页</a></li>
+				<li><a href="{% url 'goods:index' %}">首页</a></li>
 				<li class="interval">|</li>
 				<li><a href="">手机生鲜</a></li>
 				<li class="interval">|</li>
@@ -30,7 +30,7 @@
 	<div class="breadcrumb">
 		<a href="#">全部分类</a>
 		<span>></span>
-		<a href="{% url 'fruite' 2 1 %}">新鲜水果</a>
+		<a href="{% url 'goods:fruite' 2 1 %}">新鲜水果</a>
 		<span>></span>
 		<a href="#">商品详情</a>
 	</div>
@@ -62,7 +62,7 @@
 			<div class="total" >总价：<span id="price">2元</span></div>
 			<div class="operate_btn">
 				<a href="javascript:;" class="buy_btn">立即购买</a>
-				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>
+				<a href="{% url 'goods:hehehe' a.id %} }" class="add_cart" id="add_cart">加入购物车</a>
 			</div>
 		</div>
 	</div>

@@ -54,7 +54,7 @@
 				<a href="#">加州提子</a>
 				<a href="#">亚马逊牛油果</a>
 			</div>
-			<a href="{% url 'fruite' 2 1 %}" class="goods_more fr" id="fruit_more">查看更多 ></a>
+			<a href="{% url 'goods:fruite' 2 1 %}" class="goods_more fr" id="fruit_more">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -63,8 +63,8 @@
             {% for con in con %}
 
 				<li>
-					<h4><a href="{% url 'detail' con.id %}">{{ con.gtitle }}</a></h4>
-					<a href="{% url 'detail' con.id %}">{{ con.gpic|safe }}</a>
+					<h4><a href="{% url 'goods:detail' con.id %}">{{ con.gtitle }}</a></h4>
+					<a href="{% url 'goods:detail' con.id %}">{{ con.gpic|safe }}</a>
 					<div class="prize">¥ {{ con.gprice }}</div>
 				</li>
                 {% endfor %}
@@ -100,7 +100,7 @@
 				<a href="#">河虾</a>
 				<a href="#">扇贝</a>
 			</div>
-			<a href="{% url 'fruite' 3  1 %}" class="goods_more fr">查看更多 ></a>
+			<a href="{% url 'goods:fruite' 3  1 %}" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -108,8 +108,8 @@
 			<ul class="goods_list fl">
         {% for ter in woter %}
         <li>
-					<h4><a href="{% url 'detail' ter.id %}">{{ ter.gtitle }}</a></h4>
-					<a href="{% url 'detail' ter.id %}">{{ ter.gpic|safe }}</a>
+					<h4><a href="{% url 'goods:detail' ter.id %}">{{ ter.gtitle }}</a></h4>
+					<a href="{% url 'goods:detail' ter.id %}">{{ ter.gpic|safe }}</a>
 					<div class="prize">{{ ter.gprice }}</div>
 				</li>
         {% endfor %}

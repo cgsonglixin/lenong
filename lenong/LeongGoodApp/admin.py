@@ -4,3 +4,4 @@ from LeongGoodApp import models
 
 admin.site.register(models.GoodsInfo)
 admin.site.register(models.Typeinfo)
+admin.site.register(models.Userinfo)

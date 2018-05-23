@@ -16,7 +16,7 @@
 				</ul>
 			</div>
 			<ul class="navlist fl">
-				<li><a href="{% url 'index' %}">首页</a></li>
+				<li><a href="{% url 'goods:index' %}">首页</a></li>
 				<li class="interval">|</li>
 				<li><a href="">手机生鲜</a></li>
 				<li class="interval">|</li>
@@ -38,8 +38,8 @@
 				<ul>
                     {% for foo in con1  %}
                     <li>
-						<a href="{% url 'detail' foo.id %}">{{ foo.gpic|safe }}</a>
-						<h4><a href="{% url 'detail' foo.id %}">{{ foo.gtitle }}</a></h4>
+						<a href="{% url 'goods:detail' foo.id %}">{{ foo.gpic|safe }}</a>
+						<h4><a href="{% url 'goods:detail' foo.id %}">{{ foo.gtitle }}</a></h4>
 						<div class="prize">￥{{ foo.gprice }}</div>
 					</li>
                     {% endfor %}
@@ -60,7 +60,7 @@
 			<ul class="goods_type_list clearfix">
                 {% for foo in con %}
                 <li>
-					<a href="{% url 'detail' foo.id %}">{{ foo.gpic|safe }}</a>
+					<a href="{% url 'goods:detail' foo.id %}">{{ foo.gpic|safe }}</a>
 					<h4><a href="">{{ foo.gtitle }}</a></h4>
 					<div class="operate">
 						<span class="prize">￥{{ foo.gprice }}</span>
@@ -76,7 +76,7 @@
 			<div class="pagenation">
 				<a href="#"><上一页</a>
                 {% for foo in con.paginator.page_range %}
-                <a href="{% url 'fruite' fkey foo  %}" class="active">{{ foo }}</a>
+                <a href="{% url 'goods:fruite' fkey foo  %}" class="active">{{ foo }}</a>
                 {% endfor %}
 
 

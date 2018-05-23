@@ -21,9 +21,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'user/',include(user_urls)),
+    url(r'user/',include(user_urls,namespace='user')),
     url(r'tinymce/',include('tinymce.urls')),
-    url(r'goods/',include(good_url)),
+    url(r'goods/',include(good_url,namespace='goods')),
     url(r'ckeditor/',include('ckeditor_uploader.urls'))
 ]
 
