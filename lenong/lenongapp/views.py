@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from lenongapp import models
+from lenongapp import models as lapp
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import  reverse
+from LeongGoodApp import models as Laap
 
 # Create your views here.
 def index(request):
@@ -15,7 +16,7 @@ def useri(request):
     cpwd = request.POST.get('cpwd')
     email = request.POST.get('email')
     ok =  request.POST.get('allow')
-    zhan = models.UserInfo.book.all()
+    zhan = lapp.UserInfo.book.all()
     for i in zhan:
         if i.uname == name:
             return HttpResponse('已被注册')
@@ -23,7 +24,7 @@ def useri(request):
             return HttpResponse('邮箱已被注册')
 
     if pwd == cpwd and ok == '123':
-        a = models.UserInfo()
+        a = lapp.UserInfo()
         a.uname = name
         a.upwd = pwd
         a.uemail = email
@@ -49,10 +50,18 @@ def login_handle(request):
     str(username)
     str(pwd)
     try:
-        a = models.UserInfo.book.get(uname=username)
+        a = lapp.UserInfo.book.get(uname=username)
         if a.upwd == pwd:
             request.session['uname'] = username
-            return HttpResponseRedirect('/goods/index/')
+            uname = request.session.get('uname')
+            b = Laap.Userinfo.book2.all()
+            for b in b:
+                if b.utitle == uname:
+                    return redirect(reverse('goods:index'))
+            a = Laap.Userinfo()
+            a.utitle = uname
+            a.save()
+            return redirect(reverse('goods:index'))
 
         else:
             return HttpResponse('密码错误')
@@ -69,7 +78,7 @@ def login(request):
 def user_info(request):
     uname = request.session.get('uname')
     try:
-        a = models.UserInfo.book.get(uname=uname)
+        a = lapp.UserInfo.book.get(uname=uname)
 
         return  render(request,'user_center_info.html',{'a':a})
     except:
@@ -78,7 +87,7 @@ def user_info(request):
 def user_site(request):
     uname = request.session.get('uname')
     try:
-        a = models.UserInfo.book.get(uname=uname)
+        a = lapp.UserInfo.book.get(uname=uname)
 
         return  render(request,'user_center_site.html',{'a':a})
     except:
@@ -90,7 +99,7 @@ def site_handle(request):
     post1 = request.POST.get('post1')
     shouji = request.POST.get('shouji')
     uname = request.session.get('uname')
-    a = models.UserInfo.book.get(uname=uname)
+    a = lapp.UserInfo.book.get(uname=uname)
     a.uaddress = address
     a.uzip_code = post1
     a.ureceive = name
