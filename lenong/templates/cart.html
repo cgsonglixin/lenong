@@ -2,10 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="author" content="http://www.softwhy.com/" />
 	<title>乐农优选-购物车</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
     <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <script>
+function jisuan(obj){
+  var total=0;
+  var fruits=document.getElementsByName("fruit");
+  for (var index = 0; index < fruits.length; index++) {
+    if (fruits[index].checked) {
+      total += parseFloat(fruits[index].value);
+    }
+  }
+  myspan.innerHTML=total+"元";
+}
+window.onload=function(){
+  var obox=document.getElementById("box");
+  var inputs=obox.getElementsByTagName("input");
+  for (var index = 0; index < inputs.length; index++) {
+    inputs[index].onclick = function () {
+      jisuan(this)
+    }
+  }
+}
+</script>
+
     <script>
 /* 删除*/
    function cart_del(cart_id){
@@ -171,10 +194,14 @@
 		<li class="col05">小计</li>
 		<li class="col06">操作</li>
 	</ul>
-    <form action="" method="get">
-    {% for foo in a %}
-    <ul class="cart_list_td clearfix" id="{{ foo.id }}">
-		<li class="col01"><input type="checkbox" name="orderid" checked class="checkbox" value="{{foo.id}}"></li>
+    <form action="" method="get" id="checkboxform">
+
+    <ul class="cart_list_td clearfix">
+    <ul id="box">
+        {% for foo in a %}
+        <li class="col01">
+
+        <input type="checkbox" name="fruit"  class="checkbox" value="{{ foo.gprice }}">
 		<li class="col02"><img src="/static/images/goods/goods012.jpg"></li>
 		<li class="col03">{{ foo.gtitle }}<br><em>{{ foo.gprice }}/500g</em></li>
 		<li class="col04">500g</li>
@@ -188,8 +215,10 @@
 		</li>
 		<li class="col07" class="price">{{ foo.gprice }}</li>
 		<li class="col08"><a href="javascript:cart_del({{cart.id}});">删除</a></li>
+        {% endfor %}
+    </ul>
 	</ul>
-    {% endfor %}
+
 </form>
 
 
@@ -197,7 +226,7 @@
 	<ul class="settlements">
 		<li class="col01"><input type="checkbox" name="" checked=""></li>
 		<li class="col02">全选</li>
-		<li class="col03">合计(不含运费)：<span>¥</span><em>42.60</em><br>共计<b>2</b>件商品</li>
+		<li class="col03">合计(不含运费)：<span>¥</span><em><span id="myspan">0元</span></em><br>共计<b>2</b>件商品</li>
 		<li class="col04"><a href="place_order.html">去结算</a></li>
 	</ul>
 
@@ -214,10 +243,6 @@
 		<p>CopyRight © 2016 乐农优选信息技术有限公司 All Rights Reserved</p>
 		<p>电话：010-****888    京ICP备*******8号</p>
 	</div>
-    <script>
-
-
-    </script>
 
 
 </body>

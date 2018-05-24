@@ -8,6 +8,7 @@ urlpatterns =[
     url(r'hehehe/(\d+)',v.heheda,name='hehehe'),
     url(r'order/',v.user_order,name='user_order'),
     url(r'cart',v.cart,name='cart'),
+    url(r'place_order',v.place_order,name='place_order')
 
 
 ]

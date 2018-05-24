@@ -11,7 +11,7 @@ def detail(request,details):
     return render(request,'detail.html',{'a':a})
 
 def test1(request):
-    return render(request,'test1.html')
+    return render(request,'test.html')
 
 def list(request,fkey,pindex):
     con = models.GoodsInfo.book1.filter(Q(g_type=fkey) & Q(g_User=29))
@@ -78,4 +78,18 @@ def cart(request):
     uname = request.session.get('uname')
     gid = models.Userinfo.book2.get(utitle=uname)
     a = models.GoodsInfo.book1.filter(g_User=gid)
+
+
     return render(request, 'cart.html', {'a': a, 'uname': a})
+
+def place_order(request):
+    uname = request.session.get('uname')
+    gid = models.Userinfo.book2.get(utitle=uname)
+    gid = gid.id
+    a = models.GoodsInfo.book1.filter(Q(g_User=gid) & Q(isDelete=0))
+    b = 0
+    for c in a:
+        b = b + c.gprice
+    b = b - 10
+    context = {'a':a,'b':b}
+    return render(request,'place_order.html',context)

@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>第一个P标签</p>
-<p>第二个P标签</p>
-<p>第三个P标签</p>
-<p>第四个P标签</p>
+<meta charset=" utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>蚂蚁部落</title>
 <script>
-    var p = document.getElementsByTagName('p'),
-    p_len = p.length;
-for(var i = 0;i < p_len;i++){
-    p[i].onclick = function(){
-        alert(this);
+function jisuan(obj){
+  var total=0;
+  var fruits=document.getElementsByName("fruit");
+  for (var index = 0; index < fruits.length; index++) {
+    if (fruits[index].checked) {
+      total += parseFloat(fruits[index].value);
+      myspan.innerHTML=total+"元";
     }
+  }
+
+}
+window.onload=function(){
+  var obox=document.getElementsByName("box");
+  var inputs=obox.getElementsByTagName("input");
+  for (var index = 0; index < inputs.length; index++) {
+    inputs[index].onclick = function () {
+      jisuan(this)
+    }
+  }
 }
 </script>
+</head>
+<body>
+<ul name="box">
+  <li><input type="checkbox" name="fruit" value="10"/>蚂蚁部落一 10元</li>
+  <li><input type="checkbox" name="fruit" value="20"/>蚂蚁部落二 20元</li>
+  <li><input type="checkbox" name="fruit" value="30"/>蚂蚁部落三 30元</li>
+  <li><input type="checkbox" name="fruit" value="40"/>蚂蚁部落四 40元</li>
+  <li><input type="checkbox" name="fruit" value="20"/>蚂蚁部落五 50元</li>
+</ul>
+总价格是：<span id="myspan">0元</span>
 </body>
 </html>
